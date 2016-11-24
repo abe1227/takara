@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+								   height=device-height,
+								   initial-scale=1,
+								   maximum-scale=1,
+								   user-scalable=no">
+	<title>まちなか宝さがし合戦</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAUOnO_YJlMVTwM9gmrR_oHxjm2zqt1tik&sensor=true&language=ja"></script>
+	<script src="js/gmaps.js"></script>
+	<style>
+	html,body,#map{
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+
+	<script>
+	var gmap = new GMaps({
+   div: '#map',
+   lat: 37.398034,
+   lng: 140.388165,
+   zoom: 17
+  });
+  var player = gmap.addMarker({
+   lat: 37.398034,
+   lng: 140.388165,
+   title: 'player',
+   icon: 'image/pointer.gif',
+   optimized: false
+  });
+  var optionObj = {
+   "enableHighAccuracy": false,
+   "timeout": 1000000,
+   "maximumAge": 100,
+  };
+  var watchPos;
+  function setMapPosition(pos){
+   console.log(pos);
+   var lat = pos.coords.latitude;
+   var lng = pos.coords.longitude;
+
+   player.setMap(null);
+
+   player = gmap.addMarker({
+    lat: lat,
+    lng: lng,
+    title: 'player',
+    icon: 'image/pointer.gif',
+    optimized: false
+   });
+
+   gmap.setCenter(lat, lng);
+  }
+
+  function errorCallback(error){
+   console.log(error);
+   var err_msg = "";
+   switch(error.code)
+   {
+    case 1:
+    err_msg = "位置情報の利用が許可されていません";
+    break;
+    case 2:
+    err_msg = "デバイスの位置が判定できません";
+    break;
+    case 3:
+    err_msg = "タイムアウトしました";
+    break;
+   }
+
+   alert(err_msg);
+  }
+
+  $(document).ready(function(){
+   console.log(navigator.geolocation);
+   if (navigator.geolocation) {
+    watchPos = navigator.geolocation.watchPosition(setMapPosition, errorCallback, optionObj);
+   } else {
+    alert('あなたのブラウザは対応していません');
+   }
+  });
+	</script>
+</body>
+</html>

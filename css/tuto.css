@@ -1,0 +1,62 @@
+.tuto-container{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 2;
+}
+
+.main-carousel{
+	width: 100%;
+	height: 80%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.carousel-cell{
+	width: 100%;
+}
+
+.carousel-cell > img{
+	width: 100%;
+	max-width: 85%;
+	max-height: 100%;
+}
+
+.flickity-page-dots .dot {
+	width: 12px;
+	height: 12px;
+	opacity: 1;
+	background: transparent;
+	border: 2px solid white;
+}
+
+.flickity-page-dots .dot.is-selected {
+	background: white;
+}
+
+/* smaller, dark, rounded square */
+.flickity-prev-next-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+}
+.flickity-prev-next-button:hover {
+  background: #fff;
+}
+/* arrow color */
+.flickity-prev-next-button .arrow {
+  fill: #333;
+}
+.flickity-prev-next-button.no-svg {
+  color: #333;
+}

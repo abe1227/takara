@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+								   height=device-height,
+								   initial-scale=1,
+								   maximum-scale=1,
+								   user-scalable=no">
+	<title>まちなか宝さがし合戦</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/name.css">
+</head>
+<body>
+	<div class="hukidasi-img-div">
+		<img class="hukidasi-img" src="image/hukidasi.png" alt="">
+	</div>
+	<table class="hukidasi-tab">
+		<tr>
+			<td class="hukidasi-td conf">
+				<!-- jsから書き込み -->
+			</td>
+		</tr>
+	</table>
+
+	<table class="gaiok-tab">
+		<tr>
+			<td class="gaiok-left" rowspan="2">
+				<img class="gaiok-gai" src="image/name_conf_gai.png" alt="">
+			</td>
+			<td class="gaiok-right">
+				<img class="name-conf-no" src="image/no.png" alt="">
+			</td>
+		</tr>
+		<tr>
+			<td class="gaiok-right ok">
+				<img class="name-conf-ok" src="image/ok.png" alt="">
+			</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/takara.js"></script>
+	<script>
+		$(function(){
+			var name_w = localStorage.getItem("name_w");
+			$('.conf').html('君の名前は<br>' + name_w + ' だな！');
+		});
+	</script>
+</body>
+</html>

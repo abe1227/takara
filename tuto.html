@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+	height=device-height,
+	initial-scale=1,
+	maximum-scale=1,
+	user-scalable=no">
+	<title>まちなか宝さがし合戦</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/map.css">
+	<style>
+.modal-stamp-get{
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	position: fixed;
+	/*display: none;*/
+	bottom: 0;
+	background-image: url('image/back3.png');
+}
+.main-stamp-get{
+	width: 100%;
+	height: 100%;
+	background: rgba(64,33,15,0.7);
+}
+.stamp-get-img{
+	width: 100%;
+	height: 65%;
+	position: relative;
+}
+.stamp-get-img > img{
+	width: 80%;
+	max-width: 80%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.stamp-get-gai{
+	width: 100%;
+	height: 35%;
+	position: relative;
+}
+.stamp-get-gai > img{
+	width: 100%;
+	max-width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+	</style>
+</head>
+<body>
+
+	<div class="modal-stamp-get">
+		<div class="main-stamp-get">
+			<div class="stamp-get-img">
+				<img src="image/stamp_back.png" alt="">
+			</div>
+			<div class="stamp-get-gai">
+				<img src="image/stamp_get_gai.png" alt="">
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+$('.stamp-get-img > img').click(function(){
+	$('.stamp-get-img > img').attr('src', 'image/stamp_sample.png');
+	setTimeout(function(){
+		// モーダル非表示にさせる
+	},1000);
+});
+</script>
+</html>

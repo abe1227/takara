@@ -1,0 +1,15 @@
+html,body{
+	width: 100%;
+}
+
+.login-div{
+	width: 100%;
+	text-align: right;
+	margin-top: 30px;
+}
+
+.login-form{
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}

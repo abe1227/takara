@@ -1,0 +1,306 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testだよ</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script type='text/javascript'>
+
+        $(document).ready(function(){
+             test();
+        });
+
+        function test(){
+            var member_name = "ひろどん"
+
+            $.ajax({
+                type: 'POST',
+                url: 'member_insert.php',
+                data:{
+                    insert_member:member_name
+                },
+                dataType: 'html',
+            })
+    .done(function(data, status, jqXHR){
+        $("#result").html(data);
+    })
+    .fail(function(jqXHR, status, error){
+       $("#result").html("エラーです");
+   })
+    .always(function(jqXHR, status){
+        $("#log").html(status);
+        console.log(status);
+    });
+
+}
+
+</script>
+</head>
+<body>
+    <div id="result"></div>
+    <p id="log"></p>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testだよ</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function()
+        {
+        /**
+         * Ajax通信メソッド
+         * @param type      : HTTP通信の種類
+         * @param url       : リクエスト送信先のURL
+         * @param dataType  : データの種類
+         */
+         $.ajax({
+            type: "POST",
+            url: "get_stamp.php",
+            dataType: "json",
+            /**
+             * Ajax通信が成功した場合に呼び出されるメソッド
+             */
+             success: function(data, dataType)
+             {
+                //結果が0件の場合
+                if(data == null) alert('データが0件でした');
+
+                //返ってきたデータの表示
+                var $content = $('#result');
+                for (var i =0; i<data.length; i++)
+                {
+                    $content.append("<li>" + data[i].stamp_id + "</li>");
+                    $content.append("<li>" + data[i].name + "</li>");
+                    $content.append("<li>" + data[i].image_url + "</li>");
+                    $content.append("<li>" + data[i].lat + "</li>");
+                    $content.append("<li>" + data[i].lng + "</li>");
+                }
+            },
+            /**
+             * Ajax通信が失敗場合に呼び出されるメソッド
+             */
+             error: function(XMLHttpRequest, textStatus, errorThrown)
+             {
+                //通常はここでtextStatusやerrorThrownの値を見て処理を切り分けるか、単純に通信に失敗した際の処理を記述します。
+
+                //this;
+                //thisは他のコールバック関数同様にAJAX通信時のオプションを示します。
+
+                //エラーメッセージの表示
+                alert('Error : ' + errorThrown);
+            }
+        });
+     });
+ </script>
+</head>
+<body>
+    <div id="result"></div>
+    <p id="log"></p>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testだよ</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function()
+        {
+        /**
+         * Ajax通信メソッド
+         * @param type      : HTTP通信の種類
+         * @param url       : リクエスト送信先のURL
+         * @param dataType  : データの種類
+         */
+         $.ajax({
+            type: "POST",
+            url: "get_treasure.php",
+            dataType: "json",
+            /**
+             * Ajax通信が成功した場合に呼び出されるメソッド
+             */
+             success: function(data, dataType)
+             {
+                //結果が0件の場合
+                if(data == null) alert('データが0件でした');
+
+                //返ってきたデータの表示
+                var $content = $('#result');
+                for (var i =0; i<data.length; i++)
+                {
+                    $content.append("<li>" + data[i].treasure_id + "</li>");
+                    $content.append("<li>" + data[i].answer + "</li>");
+                    $content.append("<li>" + data[i].max_quantity + "</li>");
+                    $content.append("<li>" + data[i].quantity_count + "</li>");
+                    $content.append("<li>" + data[i].lat + "</li>");
+                    $content.append("<li>" + data[i].lng + "</li>");
+                }
+            },
+            /**
+             * Ajax通信が失敗場合に呼び出されるメソッド
+             */
+             error: function(XMLHttpRequest, textStatus, errorThrown)
+             {
+                //通常はここでtextStatusやerrorThrownの値を見て処理を切り分けるか、単純に通信に失敗した際の処理を記述します。
+
+                //this;
+                //thisは他のコールバック関数同様にAJAX通信時のオプションを示します。
+
+                //エラーメッセージの表示
+                alert('Error : ' + errorThrown);
+            }
+        });
+     });
+ </script>
+</head>
+<body>
+    <div id="result"></div>
+    <p id="log"></p>
+</body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testだよ</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function()
+    {
+        /**
+         * Ajax通信メソッド
+         * @param type      : HTTP通信の種類
+         * @param url       : リクエスト送信先のURL
+         * @param dataType  : データの種類
+         */
+        var stamp_id = 0;//GETがなければ0(データを取得しない)
+        var url   = location.search;
+        if (url != "") {//GETがあるなら～
+            alert("QRコードからの表示")
+            parameters    = url.split("?");
+            params   = parameters[1].split("&");
+            var paramsArray = [];
+            for ( i = 0; i < params.length; i++ ) {
+                neet = params[i].split("=");
+                paramsArray.push(neet[0]);
+                paramsArray[neet[0]] = neet[1];
+            }
+            stamp_id = paramsArray["sid"];
+            $.ajax({
+                type: "POST",
+                url: "stamp_qr.php",
+                data:{
+                    stamp_id:stamp_id
+                },
+                dataType: "json",
+                    /**
+                     * Ajax通信が成功した場合に呼び出されるメソッド
+                     */
+                 success: function(data, dataType)
+                 {
+                    //結果が0件の場合
+                    if(data == null) alert('データが0件でした');
+
+                    //返ってきたデータの表示
+                    var $content = $('#result');
+                    for (var i =0; i<data.length; i++)
+                    {
+                        $content.append("<li>" + data[i].stamp_id + "</li>");
+                        $content.append("<li>" + data[i].name + "</li>");
+                        $content.append("<li>" + data[i].image_url + "</li>");
+                        $content.append("<li>" + data[i].lat + "</li>");
+                        $content.append("<li>" + data[i].lng + "</li>");
+                    }
+                },
+                /**
+                 * Ajax通信が失敗場合に呼び出されるメソッド
+                 */
+                 error: function(XMLHttpRequest, textStatus, errorThrown)
+                {
+                    //通常はここでtextStatusやerrorThrownの値を見て処理を切り分けるか、単純に通信に失敗した際の処理を記述します。
+
+                    //this;
+                    //thisは他のコールバック関数同様にAJAX通信時のオプションを示します。
+
+                    //エラーメッセージの表示
+                    alert('Error : ' + errorThrown);
+                }
+            });
+        }else{
+            alert("通常表示")
+        }
+    });
+</script>
+</head>
+<body>
+    <div id="result"></div>
+    <p id="log"></p>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testだよ</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function()
+        {
+        /**
+         * Ajax通信メソッド
+         * @param type      : HTTP通信の種類
+         * @param url       : リクエスト送信先のURL
+         * @param dataType  : データの種類
+         */
+         treasure_id = "1";
+         $.ajax({
+            type: "POST",
+            url: "treasure_count_check.php",
+            data:{
+                    treasure_id:treasure_id
+                },
+            dataType: "json",
+            /**
+             * Ajax通信が成功した場合に呼び出されるメソッド
+             */
+             success: function(data, dataType)
+             {
+                //結果が0件の場合
+                if(data == null) alert('データが0件でした');
+                //返ってきたデータの表示
+                var $content = $('#result');
+                $content.append(data+"");
+            },
+
+            /**
+             * Ajax通信が失敗場合に呼び出されるメソッド
+             */
+             error: function(XMLHttpRequest, textStatus, errorThrown)
+             {
+                //エラーメッセージの表示
+                alert('Error : ' + errorThrown);
+            }
+        });
+     });
+ </script>
+</head>
+<body>
+    <div id="result"></div>
+    <p id="log"></p>
+</body>
+</html>

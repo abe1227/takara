@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+	height=device-height,
+	initial-scale=1,
+	maximum-scale=1,
+	user-scalable=no">
+	<title>まちなか宝さがし合戦</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUOnO_YJlMVTwM9gmrR_oHxjm2zqt1tik&sensor=false&language=ja"></script>
+	<script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" media="screen">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/map.css">
+	<link rel="stylesheet" href="css/tuto.css">
+</head>
+<body>
+
+	<div class="tuto-container">
+		<div class="main-carousel" data-flickity>
+			<div class="carousel-cell">
+				<img src="image/tuto1.png" alt="">
+			</div>
+			<div class="carousel-cell">
+				<img src="image/tuto2.png" alt="">
+			</div>
+			<div class="carousel-cell">
+				<img src="image/tuto3.png" alt="">
+			</div>
+			<div class="carousel-cell">
+				<img src="image/tuto4.png" alt="">
+			</div>
+			<div class="carousel-cell">
+				<img class="tuto-start" src="image/tuto5.png" alt="">
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div id="map">
+			<!-- あなたのブラウザは対応していません -->
+		</div>
+
+		<table class="btn-tab">
+			<tr>
+				<td class="btn-tb">
+					<img class="btn-img kokoroe" src="image/kokoroe.png" alt="">
+				</td>
+				<td class="btn-tb">
+					<img class="btn-img stamp-list" src="image/stamp_list.png" alt="">
+				</td class="btn-tb">
+				<td class="btn-tb">
+					<img class="btn-img gai" src="image/gai.png" alt="">
+				</td>
+			</tr>
+		</table>
+
+		<table class="chu-tab">
+			<tr>
+				<td>
+					<img class="chu-img" src="image/chu.png" alt="">
+				</td>
+				<td class="chu-text">× 0</td>
+			</tr>
+		</table>
+
+		<!-- スタンプ一覧 -->
+		<div class="modal-stamp">
+			<table class="head">
+				<tr>
+					<td class="head-top stamp-head">スタンプ</td>
+					<td class="head-top takara-head">たからばこ</td>
+				</tr>
+				<tr>
+					<td class="head-bottom stamp-head stamp-count"></td>
+					<td class="head-bottom takara-head takara-count"></td>
+				</tr>
+				<tr>
+					<td class="border">
+						<div class="border-div border-stamp"></div>
+					</td>
+					<td class="border">
+						<div class="border-div border-takara"></div>
+					</td>
+				</tr>
+			</table>
+			<div class="main">
+
+				<!-- スタンプ一覧 -->
+				<div class="main-stamp">
+					<table class="sub-stamp-tab">
+						<tr>
+							<td class="sub-stamp-td" id="s20">
+								<img class="sub-stamp-img" src="image/stamp_back21.png" alt="">
+							</td>
+							<td class="sub-stamp-td" id="s21">
+								<img class="sub-stamp-img" src="image/stamp_back22.png" alt="">
+							</td>
+							<td class="sub-stamp-td" id="s22">
+								<img class="sub-stamp-img" src="image/stamp_back23.png" alt="">
+							</td>
+						</tr>
+					</table>
+					<table class="main-stamp-tab">
+						<tr>
+							<td class="main-stamp-td" id="s0"><img src="image/stamp_back1.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s1"><img src="image/stamp_back2.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s2"><img src="image/stamp_back3.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s3"><img src="image/stamp_back4.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s4"><img src="image/stamp_back5.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s5"><img src="image/stamp_back6.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s6"><img src="image/stamp_back7.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s7"><img src="image/stamp_back8.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s8"><img src="image/stamp_back9.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s9"><img src="image/stamp_back10.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s10"><img src="image/stamp_back11.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s11"><img src="image/stamp_back12.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s12"><img src="image/stamp_back13.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s13"><img src="image/stamp_back14.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s14"><img src="image/stamp_back15.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s15"><img src="image/stamp_back16.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s16"><img src="image/stamp_back17.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s17"><img src="image/stamp_back18.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						<tr>
+							<td class="main-stamp-td" id="s18"><img src="image/stamp_back19.png" alt="" class="main-stamp-img"></td>
+							<td class="main-stamp-td" id="s19"><img src="image/stamp_back20.png" alt="" class="main-stamp-img"></td>
+						</tr>
+						</tr>
+					</table>
+				</div>
+
+				<!-- 宝箱一覧 -->
+				<div class="main-takara">
+					<table class="main-takara-tab">
+						<tr>
+							<td class="main-takara-td" id="t0"><img src="image/takara1.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t1"><img src="image/takara2.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t2"><img src="image/takara3.png" alt="" class="main-takara-img"></td>
+						</tr>
+						<tr>
+							<td class="main-takara-td" id="t3"><img src="image/takara4.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t4"><img src="image/takara5.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t5"><img src="image/takara6.png" alt="" class="main-takara-img"></td>
+						</tr>
+						<tr>
+							<td class="main-takara-td" id="t6"><img src="image/takara7.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t7"><img src="image/takara8.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t8"><img src="image/takara9.png" alt="" class="main-takara-img"></td>
+						</tr>
+						<tr>
+							<td class="main-takara-td" id="t9"><img src="image/takara10.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t10"><img src="image/takara11.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t11"><img src="image/takara12.png" alt="" class="main-takara-img"></td>
+						</tr>
+						<tr>
+							<td class="main-takara-td" id="t12"><img src="image/takara13.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t13"><img src="image/takara14.png" alt="" class="main-takara-img"></td>
+							<td class="main-takara-td" id="t14"><img src="image/takara15.png" alt="" class="main-takara-img"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<img class="close-stamp" src="image/close.png" alt="">
+		</div>
+
+
+		<!-- スタンプ詳細 -->
+		<div class="modal-stamp-detail">
+			<div class="main-stamp-detail">
+				<table class="stamp-detail-tab">
+					<tr>
+						<td class="stamp-detail-name-td">
+							<p class="stamp-detail-name"></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="stamp-detail-img-td">
+							<!-- <div class="stamp-detail-img-div"> -->
+								<img class="stamp-detail-img" src="image/stamp_back.png" alt="">
+							<!-- </div> -->
+						</td>
+					</tr>
+					<tr>
+						<td class="stamp-detail-shop">
+							<p></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="stamp-detail-remarks-td">
+							<img src="image/stamp_get.png" alt="">
+							<p>マップをヒントにQRコードを探して<br>
+							QRコードカメラで読み取ってみよう</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<img class="close-stamp-detail" src="image/close.png" alt="">
+		</div>
+
+
+		<!-- スタンプGET -->
+		<div class="modal-stamp-get">
+			<div class="main-stamp-get">
+				<div class="stamp-get-img">
+					<img src="image/stamp_back.png" alt="">
+				</div>
+				<div class="stamp-get-gai">
+					<img src="image/stamp_get_gai.png" alt="">
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 宝箱詳細(暗号選択) -->
+		<div class="modal-takara-detail">
+			<div class="main-takara-detail">
+				<table class="takara-detail-tab">
+					<tr>
+						<td class="takara-detail-img-td">
+							<img src="image/takara.png" alt="" class="takara-detail-img">
+						</td>
+					</tr>
+					<tr>
+						<td class="takara-detail-text1-td">
+							<p class="takara-detail-text1">
+							暗号を解いて正解のカギを選ぶと<br>たからばこが開けられるぞ！</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="key-td">
+							<table class="key-img-tab">
+								<tr>
+									<td class="key-updown-td">
+										<img class="key-up-img" src="image/up.png" id="uA" alt="">
+									</td>
+									<td class="key-updown-td">
+										<img class="key-up-img" src="image/up.png" id="uB" alt="">
+									</td>
+									<td class="key-updown-td">
+										<img class="key-up-img" src="image/up.png" id="uC" alt="">
+									</td>
+								</tr>
+								<tr>
+									<td class="key-img-td">
+										<img class="key-img" id="A" src="image/key0.png" alt="">
+									</td>
+									<td class="key-img-td">
+										<img class="key-img" id="B" src="image/key0.png" alt="">
+									</td>
+									<td class="key-img-td">
+										<img class="key-img" id="C" src="image/key0.png" alt="">
+									</td>
+								</tr>
+								<tr>
+									<td class="key-updown-td">
+										<img src="image/down.png" alt="" class="key-down-img" id="dA">
+									</td>
+									<td class="key-updown-td">
+										<img src="image/down.png" alt="" class="key-down-img" id="dB">
+									</td>
+									<td class="key-updown-td">
+										<img src="image/down.png" alt="" class="key-down-img" id="dC">
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="takara-detail-open-td">
+							<p></p>
+							<img src="image/open.png" alt="">
+						</td>
+					</tr>
+				</table>
+				<img class="close-takara-detail" src="image/close.png" alt="">
+			</div>
+		</div>
+
+
+		<!-- たからばこ結果 -->
+		<div class="modal-takara-result">
+			<div class="main-takara-result">
+				<table class="takara-result-tab">
+					<tr>
+						<td class="takara-result-img-td">
+							<img class="takara-result-img" src="image/takara.png" alt="">
+						</td>
+					</tr>
+					<tr>
+						<td class="takara-result-img2-td">
+							<img src="" alt="">
+						</td>
+					</tr>
+					<tr>
+						<td class="takara-result-text2-td">
+							<p class="takara-result-text2"></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="takara-result-bottom"></td>
+					</tr>
+				</table>
+				<img class="close-takara-result" src="image/close.png" alt="">
+			</div>
+		</div>
+
+
+		<!-- 参加の心得 -->
+		<div class="modal-kokoroe">
+			<div class="main-kokoroe">
+				<img class="kokoroe_img" src="image/kokoroe_img.png" alt="">
+				<img class="close-kokoroe" src="image/close.png" alt="">
+			</div>
+		</div>
+
+		<!-- ガイレンジャー詳細 -->
+		<div class="modal-gai">
+			<div class="main-gai">
+				<img class="gai_intro" src="image/gai_intro.png" alt="">
+				<img class="close-gai" src="image/close.png" alt="">
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/gmaps.js"></script>
+	<script src="js/map.js"></script>
+</body>
+</html>

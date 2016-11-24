@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+								   height=device-height,
+								   initial-scale=1,
+								   maximum-scale=1,
+								   user-scalable=no">
+	<title>まちなか宝さがし合戦</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/name.css">
+</head>
+<body>
+	<div class="hukidasi-img-div">
+		<img class="hukidasi-img" src="image/hukidasi.png" alt="">
+	</div>
+	<table class="hukidasi-tab">
+		<tr>
+			<td class="hukidasi-td">
+				君の名前を教えてくれ！
+			</td>
+		</tr>
+	</table>
+	<p class="error-msg"></p>
+
+	<input class="name-text" type="text" placeholder="名前を入力しよう">
+
+	<table class="gaiok-tab">
+		<tr>
+			<td class="gaiok-left" rowspan="2">
+				<img class="gaiok-gai" src="image/name_input_gai.png" alt="">
+			</td>
+			<td class="gaiok-right">
+				<p>※8文字以内<br>※ひらがな、英字のみ</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="gaiok-right ok">
+				<img class="gaiok-ok" src="image/ok.png" alt="">
+			</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/takara.js"></script>
+	<script src="js/check.js"></script>
+</body>
+</html>
